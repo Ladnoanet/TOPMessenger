@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Удаление usernameTOP из localStorage</title>
+</head>
+<body>
+    <button id="removeBtn">Удалить usernameTOP</button>
+
+    <script>
+        document.getElementById('removeBtn').addEventListener('click', function() {
+            localStorage.removeItem('anonymousUser');
+        });
+    </script>
+</body>
+</html>

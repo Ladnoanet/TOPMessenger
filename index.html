@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анонимный Мессенджер</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <div id="auth-page" class="page active">
+            <div class="auth-container">
+                <div class="auth-header">
+                    <img  src="topmessenger.png" alt="topmessenger" class="topmessenger-logo">
+                    <h1><span style="color: #9019ff;">Зарегистрируйтесь</span> в ТОП Мессенджер!</h1>
+                </div>
+                
+                <div class="auth-form">
+                    <div class="input-group">
+                        <input type="text" id="username" placeholder="Ваше Имя" maxlength="20">
+                        <span class="char-count">0/20</span>
+                    </div>
+                    
+                    <button id="start-chat-btn" class="btn-primary">
+                        Зарегистрироваться
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    <!-- Страница списка чатов -->
+        <div id="chats-page" class="page">
+            <div class="header">
+                <div class="header-content">
+                    <h2>Чаты</h2>
+                    <div class="user-info">
+                        <span style="display: none;" id="current-user"></span> <!-- Для теста -->
+                        <button id="users-btn" class="btn-icon" title="Все пользователи">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <button id="new-chat-btn" class="btn-icon">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <button id="logout-btn" class="btn-icon">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chats-container">
+                <div id="active-chat" class="active-chat" style="display: none;">
+                    <div class="active-chat-header">
+                        <i class="fas fa-fire"></i>
+                        <span>Активный чат</span>
+                    </div>
+                    <div class="active-chat-content">
+                        <div class="active-chat-user">
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="user-details">
+                                <span class="username" id="active-chat-username"></span>
+                                <span class="last-message" id="active-chat-message"></span>
+                            </div>
+                            <button class="btn-chat" id="go-to-active-chat">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chats-list" id="chats-list">
+                </div>
+
+                <div class="empty-state" id="empty-state">
+                    <i class="fas fa-comments"></i>
+                    <h3>Нет доступных чатов</h3>
+                    <p>Начните общение с пользователями ТОП!</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="chat-page" class="page">
+            <div class="chat-header">
+                <button class="btn-back" id="back-to-chats">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <div class="chat-user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-details">
+                        <span class="username" id="chat-username"></span>
+                        <span class="status">онлайн</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="messages-container" id="messages-container">
+            </div>
+
+            <div class="message-input-container">
+                <div class="message-input-wrapper">
+                    <input type="text" id="message-input" placeholder="Введите сообщение..." maxlength="500">
+                    <button id="send-message-btn" class="btn-send">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="users-page" class="page">
+            <div class="header">
+                <div class="header-content">
+                    <button class="btn-back" id="back-from-users">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <div class="search-container">
+                        <input type="text" id="users-search" placeholder="Поиск..." maxlength="30">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="users-container">
+                <div class="users-list" id="users-list">
+                </div>
+
+                <div class="empty-users-state" id="empty-users-state" style="display: none;">
+                    <i class="fas fa-users"></i>
+                    <h3>Пользователи не найдены</h3>
+                    <p>Попробуйте изменить поисковый запрос</p>
+                </div>
+
+                <div class="loading-users" id="loading-users">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span>Поиск...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html> 
