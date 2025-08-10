@@ -643,7 +643,7 @@ function startActiveUpdates() {
                     });
             }
         }
-    }, 3000);
+    }, 500);
 }
 
 
@@ -667,4 +667,5 @@ window.addEventListener('blur', () => {
             lastSeen: new Date().toISOString()
         });
     }
+
 }); 
