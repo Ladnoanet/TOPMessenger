@@ -484,7 +484,7 @@ async function loadAllUsers() {
             .sort((a, b) => {
                 if (a.isOnline && !b.isOnline) return -1;
                 if (!a.isOnline && b.isOnline) return 1;
-                return a.username.localeCompare(b.username);
+                return (a.username || '').localeCompare(b.username || '');
             });
 
         renderUsers(users);
@@ -669,3 +669,4 @@ window.addEventListener('blur', () => {
     }
 
 }); 
+
